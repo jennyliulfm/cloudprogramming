@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<!-- ===================================================================== -->
+<!-- -->
+<!-- Log4j Configuration -->
+<!-- -->
+<!-- ===================================================================== -->
+<!-- $Id: log4j.xml -->
+<!-- 
+	| For more configuration infromation and examples see the Jakarta Log4j 
+	| owebsite: http://jakarta.apache.org/log4j 
+-->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	debug="false">
+
+
+	<!-- =================Appenders for Default =================-->
+	<appender name="Default" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%t] [%c] %m%n" />
+		</layout>
+	</appender>
+
+	<!-- =================input log to file =================-->
+	<appender name="FILE_ALL"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/home/ubuntu/log/demo_all.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<!--   The   default   pattern:   Date   Priority   [Category]   Message\n   -->
+			<param name="ConversionPattern" value="%d %-5p [%t] [%c] %m%n" />
+		</layout>
+	</appender>
+	
+	<category name="edu.utas" additivity="false">
+
+       <priority value="debug" />
+
+       <appender-ref ref="Default" />
+
+       <appender-ref ref="FILE_ALL" />
+
+    </category>
+	
+	
+</log4j:configuration>

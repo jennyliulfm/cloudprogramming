@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>KIT418 - Assignment 3</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="resources/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/css/util.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	<ul>
+		<li><a class="active" href="/">Home</a></li>
+		<li><a href="/dashboard">Dashboard</a></li>
+	</ul>
+
+	<div class="container-contact100" style="background-image: url('resources/images/bg-01.jpg');">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" method="POST" enctype="multipart/form-data" action="/">
+				<span class="contact100-form-title">
+					Upload application
+				</span>
+
+				<div class="wrap-input100 validate-input" data-validate="File is required">
+					<span class="label-input100">Application to upload:</span>
+					<input class="input100" type="file" name="file" accept=".py,.jar"/>
+				</div>
+
+				<div class="wrap-input100">
+					<span class="label-input100">Data file to upload:</span>
+					<input class="input100" type="file" name="data"/>
+				</div>
+
+				<div class="wrap-input100">
+					<span class="label-input100">Execute in:</span>
+					<input class="input100" type="number" name="minutes" placeholder="minutes" min="1" max="180" step="1" pattern="\d*"/>
+				</div>
+				
+				<div class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button class="contact100-form-btn">
+							Submit
+						</button>
+					</div>
+				</div>
+			</form>
+			<div style="padding-top: 35px;" th:if="${message}">
+				<h5 th:text="${message}"/>
+			</div>
+		</div>
+	</div>
+
+<!--===============================================================================================-->
+	<script src="resources/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="resources/vendor/bootstrap/js/popper.js"></script>
+	<script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="resources/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="resources/js/main.js"></script>
+
+</body>
+</html>

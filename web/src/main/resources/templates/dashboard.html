@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>KIT418 - Assignment 3</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="resources/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="resources/css/util.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/main.css">
+<!--===============================================================================================-->
+	<style>
+		.x {
+			float:left;
+			position:relative;
+			margin:0;
+			padding:0;
+			overflow:hidden;
+			background:#CCC;
+			border-radius:2px;
+			border:solid 2px #FFF;
+			transition: all .3s ease-out;
+			cursor:pointer;
+		}
+		.x.large {
+			width:30px;
+			height:30px;
+		}
+
+		.x.medium {
+			width:20px;
+			height:20px;
+		}
+
+		.x.shift:hover{
+			background:#BB3333;
+		}
+
+		.x b{
+			display:block;
+			position:absolute;
+			height:0;
+			width:0;
+			padding:0;
+			margin:0;
+		}
+
+		.x.medium b {
+			border:solid 10px rgba(255,255,255,0);
+		}
+		.x.large b {
+			border:solid 15px rgba(255,255,255,0);
+		}
+		.x.switch b {
+			border:solid 10px rgba(255,255,255,0);
+		}
+
+		.x b:nth-child(1){
+			border-top-color:#FFF;
+			top:-2px;
+		}
+		.x b:nth-child(2){
+			border-left-color:#FFF;
+			left:-2px;
+		}
+		.x b:nth-child(3){
+			border-bottom-color:#FFF;
+			bottom:-2px;
+		}
+		.x b:nth-child(4){
+			border-right-color:#FFF;
+			right:-2px;
+		}
+	</style>
+
+</head>
+<body>
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a class="active" href="/dashboard">Dashboard</a></li>
+	</ul>
+
+	<div class="container-contact100" style="background-image: url('resources/images/bg-01.jpg');">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" method="POST" enctype="multipart/form-data" action="/dashboard">
+				<span class="contact100-form-title">
+					Application info
+				</span>
+
+				<div class="wrap-input100 validate-input" data-validate="Passcode is required">
+					<span class="label-input100">Passcode:</span>
+					<input class="input100" type="text" name="passcode" th:value="${passcode}"/>
+				</div>
+				
+				<div style="padding-bottom: 35px;" class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button class="contact100-form-btn">
+							Submit
+						</button>
+					</div>
+				</div>
+			</form>
+
+			<div th:if="${file}">
+				<h5 th:text="${file}"/>
+			</div>
+			<div th:if="${message}">
+				<h5 th:text="${message}"/>
+			</div>
+			<div th:if="${cancelable}">
+				<form id="hiddenForm" method="POST" enctype="multipart/form-data" action="/cancel">
+					<input type="hidden" name="passcode" th:value="${passcode}"/>
+				</form>
+				<div class="x shift medium" style="box-sizing: content-box;">
+					<a href="#" onclick="document.getElementById('hiddenForm').submit();" title="Cancel">
+						<b></b><b></b><b></b><b></b>
+					</a>
+				</div>
+			</div>
+			<div th:if="${result}">
+				<br/>
+				<a th:href="${result}"><h6>Download output file</h6></a>
+			</div>
+			<div th:if="${cost}">
+				<br/>
+				<a th:href="'/invoice/' + ${passcode}" target="_blank"><h6 th:text="'TOTAL DUE : ' + ${cost}"/></a>
+			</div>
+		</div>
+	</div>
+
+<!--===============================================================================================-->
+	<script src="resources/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="resources/vendor/bootstrap/js/popper.js"></script>
+	<script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="resources/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="resources/js/main.js"></script>
+
+</body>
+</html>
